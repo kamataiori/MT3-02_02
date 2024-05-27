@@ -386,10 +386,10 @@ void DrawPlane(const Plane& plane, const Matrix4x4& viewProjectionMatrix, const 
 		points[index] = Transform(Transform(point, viewProjectionMatrix), viewPortMatrix);
 	}
 	// 平面の4つの頂点を描画するロジック（例: 線で繋ぐなど）
-	Novice::DrawLine((int)points[0].x, (int)points[0].y, (int)points[1].x, (int)points[1].y, color);
+	Novice::DrawLine((int)points[0].x, (int)points[0].y, (int)points[2].x, (int)points[2].y, color);
 	Novice::DrawLine((int)points[1].x, (int)points[1].y, (int)points[2].x, (int)points[2].y, color);
-	Novice::DrawLine((int)points[2].x, (int)points[2].y, (int)points[3].x, (int)points[3].y, color);
-	Novice::DrawLine((int)points[3].x, (int)points[3].y, (int)points[0].x, (int)points[0].y, color);
+	Novice::DrawLine((int)points[0].x, (int)points[0].y, (int)points[3].x, (int)points[3].y, color);
+	Novice::DrawLine((int)points[1].x, (int)points[1].y, (int)points[3].x, (int)points[3].y, color);
 }
 
 bool isColliding(const Sphere& c1, const Sphere& c2)
@@ -408,6 +408,11 @@ bool isColliding(const Sphere& c1, const Sphere& c2)
 
 	// 中心間の距離が半径の和以下であれば衝突している
 	return distance <= radiusSum;
+}
+
+bool Colliding(const Sphere& c1, const Plane& c2)
+{
+	
 }
 
 

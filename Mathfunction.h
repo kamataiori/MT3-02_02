@@ -62,6 +62,8 @@ void DrawPlane(const Plane& plane, const Matrix4x4& viewProjectionMatrix, const 
 // 円（球）の衝突判定関数
 bool isColliding(const Sphere& c1, const Sphere& c2);
 
+bool Colliding(const Sphere& c1, const Plane& c2);
+
 
 
 

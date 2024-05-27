@@ -21,7 +21,7 @@ void Result::Initialize()
 	sphere.center.z = 0;
 	sphere.radius = 0.5f;
 	plane.normal.x = 0.0f;
-	plane.normal.y = 0.0f;
+	plane.normal.y = 1.0f;
 	plane.normal.z = 0.0f;
 	plane.distance = 0.0f;
 	color = 0xAAAAAAFF;
@@ -37,7 +37,7 @@ void Result::Draw()
 
 	DrawGrid(worldviewProjectionMatrix, viewportMatrix);
 	DrawSphere(sphere, worldviewProjectionMatrix, viewportMatrix, 0xAAAAAAFF);
-	DrawPlane(plane, viewportMatrix, viewMatrix,color);
+	DrawPlane(plane, worldviewProjectionMatrix, viewportMatrix,color);
 
 	//ImGui
 	ImGui::Begin("Window");
