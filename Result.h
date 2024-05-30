@@ -21,6 +21,7 @@ public:
 	Matrix4x4 projectionMatrix{};
 	Matrix4x4 worldviewProjectionMatrix{};
 	Matrix4x4 viewportMatrix{};
+
 	Sphere sphere{};
 	Plane plane{};
 	uint32_t color{};
