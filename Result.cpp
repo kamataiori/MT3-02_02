@@ -25,6 +25,8 @@ void Result::Initialize()
 	plane.normal.z = 0.0f;
 	plane.distance = 0.0f;
 	color = 0xAAAAAAFF;
+
+	segment1 = { {-2.0f,-1.0f,0.0f},{3.0f,2.0f,2.0f} };
 }
 
 void Result::Updata()
@@ -38,6 +40,11 @@ void Result::Draw()
 	DrawGrid(worldviewProjectionMatrix, viewportMatrix);
 	DrawSphere(sphere, worldviewProjectionMatrix, viewportMatrix, 0xAAAAAAFF);
 	DrawPlane(plane, worldviewProjectionMatrix, viewportMatrix,color);
+
+	//線分の描画
+	Vector3 start = Transform(Transform(segment1.origin, worldviewProjectionMatrix), viewportMatrix);
+	Vector3 end = Transform(Transform(Add(segment1.origin, segment1.diff), viewportMatrix), viewportMatrix);
+	Novice::DrawLine(int(start.x), int(start.y), int(end.x), int(end.y), WHITE);
 
 	//ImGui
 	ImGui::Begin("Window");

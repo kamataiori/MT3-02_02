@@ -26,6 +26,8 @@ public:
 	Plane plane{};
 	uint32_t color{};
 
+	Segment segment1{};
+
 	Result();
 
 	void Initialize();
