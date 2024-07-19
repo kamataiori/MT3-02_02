@@ -410,6 +410,23 @@ bool isColliding(const Sphere& c1, const Sphere& c2)
 	return distance <= radiusSum;
 }
 
+bool Colliding(const Sphere& c1, const Plane& c2)
+{
+	float distance = Dot(c2.normal, c1.center) - c2.distance;
+
+	/*if (fabsf(distance) - c1.radius <= 0)
+	{
+		return true;
+	}*/
+	return fabsf(distance) <= c1.radius;
+}
+
+float Dot(Vector3 v1, Vector3 v2)
+{
+	float result = (v1.x * v2.x) + (v1.y * v2.y) + (v1.z * v2.z);
+	return result;
+}
+
 //bool Colliding(const Sphere& c1, const Plane& c2)
 //{
 //	

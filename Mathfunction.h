@@ -65,5 +65,6 @@ bool isColliding(const Sphere& c1, const Sphere& c2);
 bool Colliding(const Sphere& c1, const Plane& c2);
 
 
+float Dot(Vector3 v1, Vector3 v2);
 
 

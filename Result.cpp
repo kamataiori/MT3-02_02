@@ -36,8 +36,16 @@ void Result::Draw()
 {
 
 	DrawGrid(worldviewProjectionMatrix, viewportMatrix);
-	DrawSphere(sphere, worldviewProjectionMatrix, viewportMatrix, 0xAAAAAAFF);
-	DrawPlane(plane, worldviewProjectionMatrix, viewportMatrix,color);
+	DrawSphere(sphere, worldviewProjectionMatrix, viewportMatrix, color);
+	DrawPlane(plane, worldviewProjectionMatrix, viewportMatrix, 0xAAAAAAFF);
+	if (Colliding(sphere, plane))
+	{
+		color = RED;
+	}
+	else
+	{
+		color = 0xAAAAAAFF;
+	}
 
 	//ImGui
 	ImGui::Begin("Window");
@@ -50,6 +58,7 @@ void Result::Draw()
 	ImGui::Begin("Window2");
 	ImGui::DragFloat3("Plane.normal", &plane.normal.x, 0.01f);
 	plane.normal = Normalize(plane.normal);
+	//ImGui::DragFloat("PlaneDistance" & plane.distance, 0.01f);
 	ImGui::End();
 
 }
