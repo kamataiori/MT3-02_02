@@ -38,12 +38,12 @@ void Result::Draw()
 {
 
 	DrawGrid(worldviewProjectionMatrix, viewportMatrix);
-	DrawSphere(sphere, worldviewProjectionMatrix, viewportMatrix, 0xAAAAAAFF);
+	//DrawSphere(sphere, worldviewProjectionMatrix, viewportMatrix, 0xAAAAAAFF);
 	DrawPlane(plane, worldviewProjectionMatrix, viewportMatrix,color);
 
 	//線分の描画
 	Vector3 start = Transform(Transform(segment1.origin, worldviewProjectionMatrix), viewportMatrix);
-	Vector3 end = Transform(Transform(Add(segment1.origin, segment1.diff), viewportMatrix), viewportMatrix);
+	Vector3 end = Transform(Transform(Add(segment1.origin, segment1.diff), worldviewProjectionMatrix), viewportMatrix);
 	Novice::DrawLine(int(start.x), int(start.y), int(end.x), int(end.y), WHITE);
 
 	//ImGui

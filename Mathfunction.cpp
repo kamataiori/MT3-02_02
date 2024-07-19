@@ -410,10 +410,10 @@ bool isColliding(const Sphere& c1, const Sphere& c2)
 	return distance <= radiusSum;
 }
 
-bool Colliding(const Sphere& c1, const Plane& c2)
-{
-	return false;
-}
+//bool Colliding(const Sphere& c1, const Plane& c2)
+//{
+//	return false;
+//}
 
 //bool Colliding(const Sphere& c1, const Plane& c2)
 //{
