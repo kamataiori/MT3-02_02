@@ -410,14 +410,32 @@ bool isColliding(const Sphere& c1, const Sphere& c2)
 	return distance <= radiusSum;
 }
 
-//bool Colliding(const Sphere& c1, const Plane& c2)
-//{
-//	return false;
-//}
+bool IsCollision(const Segment& segment, const Plane& plane)
+{
+	float dot = Dot(plane.normal, segment.diff);
+	if (dot == 0.0f)
+	{
+		return false;
+	}
+	float t = (plane.distance - Dot(segment.origin, plane.normal)) / dot;
 
-//bool Colliding(const Sphere& c1, const Plane& c2)
-//{
-//	
-//}
+
+	Novice::ScreenPrintf(0, 0, "T = %f", t);
+
+	if (t >= 0.0f && t <= 1.0f)
+	{
+		return true;
+	}
+
+	return false;
+}
+
+float Dot(Vector3 v1, Vector3 v2)
+{
+	float result = (v1.x * v2.x) + (v1.y * v2.y) + (v1.z * v2.z);
+	return result;
+}
+
+
 
 

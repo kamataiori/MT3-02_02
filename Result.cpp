@@ -24,14 +24,21 @@ void Result::Initialize()
 	plane.normal.y = 1.0f;
 	plane.normal.z = 0.0f;
 	plane.distance = 0.0f;
-	color = 0xAAAAAAFF;
+	color = WHITE;
 
-	segment1 = { {-2.0f,-1.0f,0.0f},{3.0f,2.0f,2.0f} };
+	segment = { {-2.0f,-1.0f,0.0f},{3.0f,2.0f,2.0f} };
 }
 
 void Result::Updata()
 {
-
+	if (IsCollision(segment, plane))
+	{
+		color = RED;
+	}
+	else
+	{
+		color = WHITE;
+	}
 }
 
 void Result::Draw()
@@ -42,9 +49,9 @@ void Result::Draw()
 	DrawPlane(plane, worldviewProjectionMatrix, viewportMatrix,color);
 
 	//線分の描画
-	Vector3 start = Transform(Transform(segment1.origin, worldviewProjectionMatrix), viewportMatrix);
-	Vector3 end = Transform(Transform(Add(segment1.origin, segment1.diff), worldviewProjectionMatrix), viewportMatrix);
-	Novice::DrawLine(int(start.x), int(start.y), int(end.x), int(end.y), WHITE);
+	Vector3 start = Transform(Transform(segment.origin, worldviewProjectionMatrix), viewportMatrix);
+	Vector3 end = Transform(Transform(Add(segment.origin, segment.diff), worldviewProjectionMatrix), viewportMatrix);
+	Novice::DrawLine(int(start.x), int(start.y), int(end.x), int(end.y), color);
 
 	//ImGui
 	ImGui::Begin("Window");

@@ -26,7 +26,14 @@ public:
 	Plane plane{};
 	uint32_t color{};
 
-	Segment segment1{};
+	Segment segment
+	{
+		{0.0f, 0.1f, -2.0f}, //origin
+		{1.0f, -0.4f, 2.0f}, //diff
+
+	};
+
+	//int color = WHITE;
 
 	Result();
 
